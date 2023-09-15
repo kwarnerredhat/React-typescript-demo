@@ -16,11 +16,14 @@ import {
 import { Caption, TableComposable, Tbody, Th, Thead, Tr } from '@patternfly/react-table';
 import { FormEvent, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { useQuery } from 'react-query';
+import { useQuery, useMutation } from 'react-query';
 import { choosableColors, Customer, getCustomers } from 'src/api/CustomerApi';
 import { ColoredTd } from 'src/components/ColoredTd';
 import Loader from 'src/components/Loader';
 import { useAppContext } from 'src/middleware';
+import ReactDOM from 'react-dom';
+
+
 
 const useStyles = createUseStyles({
   inlineText: {
@@ -60,9 +63,15 @@ export default () => {
         </Button>
       </GridItem>
       <GridItem sm={6}>
-        <Button onClick={() => setIsModalOpen(true)} variant='secondary'>
+        <Button
+
+          onClick={handleAddNewCustomer}
+          variant='secondary'
+        >
           Add New Customer
         </Button>
+        );
+
       </GridItem>
       <Modal
         variant={ModalVariant.small}
